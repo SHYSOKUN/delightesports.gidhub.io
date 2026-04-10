@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #ff003c; --bg: #050505; --surface: #0f0f0f; --text: #ffffff; }
+        :root { --primary: #ff5e00; --bg: #050505; --surface: #0f0f0f; --text: #ffffff; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; margin: 0; }
         .heading { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; }
         
@@ -20,13 +20,13 @@
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .nav-link { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; transition: 0.3s; color: #555; cursor: pointer; border: none; background: none; }
-        .nav-link:hover, .nav-link.active { color: #fff; }
+        .nav-link:hover, .nav-link.active { color: var(--primary); }
 
         .player-card { background: var(--surface); transition: 0.3s; border: 1px solid rgba(255,255,255,0.03); }
-        .player-card:hover { transform: translateY(-5px); background: #141414; border-color: rgba(255,255,255,0.1); }
+        .player-card:hover { transform: translateY(-5px); background: #141414; border-color: var(--primary); }
 
         .btn-primary { background: var(--primary); color: #fff; padding: 14px 35px; font-weight: 700; font-size: 11px; text-transform: uppercase; transition: 0.3s; border-radius: 2px; letter-spacing: 0.1em; }
-        .btn-primary:hover { filter: brightness(1.2); transform: translateY(-2px); }
+        .btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 10px 20px -10px rgba(255, 94, 0, 0.4); }
 
         #cart-drawer { position: fixed; right: -420px; top: 0; width: 420px; height: 100%; background: #0a0a0a; z-index: 2000; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 60px; border-left: 1px solid #222; }
         #cart-drawer.open { right: 0; }
@@ -34,9 +34,9 @@
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-[1500] bg-black/95 backdrop-blur-xl border-b border-white/5 px-12 py-7 flex justify-between items-center">
-        <div class="flex items-center gap-16">
-            <div class="heading text-3xl font-black cursor-pointer tracking-tighter" onclick="showPage('home')">DELIGHT ESPORTS</div>
+    <nav class="fixed top-0 w-full z-[1500] bg-black/95 backdrop-blur-xl border-b border-white/5 px-12 py-5 flex justify-between items-center">
+        <div class="flex items-center gap-12">
+            <img src="DLELOGO.jpg" alt="DELIGHT ESPORTS" class="h-12 cursor-pointer object-contain" onclick="showPage('home')">
             <div class="hidden lg:flex gap-10">
                 <button onclick="showPage('home')" id="n-home" class="nav-link active">Home</button>
                 <button onclick="showPage('divisions')" id="n-divisions" class="nav-link">Divisions</button>
@@ -44,7 +44,7 @@
                 <button onclick="showPage('contact')" id="n-contact" class="nav-link">Partners</button>
             </div>
         </div>
-        <div onclick="toggleCart()" class="text-[10px] font-bold border border-white/10 px-7 py-2.5 cursor-pointer hover:bg-white hover:text-black transition-all uppercase tracking-widest">
+        <div onclick="toggleCart()" class="text-[10px] font-bold border border-white/10 px-7 py-2.5 cursor-pointer hover:border-[#ff5e00] hover:text-[#ff5e00] transition-all uppercase tracking-widest">
             Inventory [<span id="cart-count">0</span>]
         </div>
     </nav>
@@ -64,17 +64,16 @@
     </div>
 
     <main>
-        
         <section id="home" class="section active">
             <div class="max-w-5xl mt-20">
-                <h3 class="text-red-600 font-black text-[10px] uppercase tracking-[0.5em] mb-8">Competitive Integrity // Est. 2026</h3>
+                <h3 class="text-[#ff5e00] font-black text-[10px] uppercase tracking-[0.5em] mb-8">Competitive Integrity // Est. 2026</h3>
                 <h1 class="heading text-8xl md:text-[9rem] leading-[0.85] mb-12 italic">DELIGHT<br>ESPORTS.</h1>
                 <p class="text-gray-400 text-xl max-w-2xl mb-14 leading-relaxed font-light">
-                    Redefining the standard of professional play. Delight Esports is a collective of world-class talent competing across the global digital frontier.
+                    Redefining dominance in professional play. A collective of world-class talent competing across the global digital frontier.
                 </p>
                 <div class="flex flex-wrap gap-8">
                     <button onclick="showPage('divisions')" class="btn-primary italic">Enter Divisions</button>
-                    <button onclick="showPage('merch')" class="border-b-2 border-white/10 px-4 py-2 text-[11px] font-bold uppercase hover:border-red-600 hover:text-red-600 transition-all">Official Supply</button>
+                    <button onclick="showPage('merch')" class="border-b-2 border-white/10 px-4 py-2 text-[11px] font-bold uppercase hover:border-[#ff5e00] hover:text-[#ff5e00] transition-all">Official Supply</button>
                 </div>
             </div>
         </section>
@@ -84,19 +83,19 @@
                 <h2 class="heading text-7xl italic">Divisions</h2>
                 <p class="text-[11px] font-bold text-gray-500 tracking-[0.4em] uppercase">Roster Update // Active Duty</p>
             </div>
-
+            
             <div class="grid grid-cols-1 gap-32">
                 <div>
                     <div class="flex items-center gap-8 mb-12">
                         <h3 class="heading text-5xl">Valorant</h3>
-                        <span class="text-red-600 font-black text-xs italic tracking-widest uppercase">Challenger Tier</span>
+                        <span class="text-[#ff5e00] font-black text-xs italic tracking-widest uppercase">Division Alpha</span>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-5">
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">ACE</p><p class="text-[9px] text-red-600 font-black uppercase tracking-widest">IGL // SE</p></div>
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">HYDRA</p><p class="text-[9px] text-red-600 font-black uppercase tracking-widest">Duelist // TR</p></div>
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">VORTEX</p><p class="text-[9px] text-red-600 font-black uppercase tracking-widest">Initiator // DE</p></div>
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">KRONOS</p><p class="text-[9px] text-red-600 font-black uppercase tracking-widest">Sentinel // FI</p></div>
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">SPECTER</p><p class="text-[9px] text-red-600 font-black uppercase tracking-widest">Controller // UK</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">ACE</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">IGL // SE</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">HYDRA</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Duelist // TR</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">VORTEX</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Initiator // DE</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">KRONOS</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Sentinel // FI</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">SPECTER</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Controller // UK</p></div>
                     </div>
                 </div>
 
@@ -106,67 +105,67 @@
                         <span class="text-gray-400 font-black text-xs italic tracking-widest uppercase">Major Challenger</span>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-5">
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">TITAN</p><p class="text-[9px] text-gray-500 font-black uppercase tracking-widest">AWP // DK</p></div>
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">RAZE</p><p class="text-[9px] text-gray-500 font-black uppercase tracking-widest">Entry // BR</p></div>
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">NEO</p><p class="text-[9px] text-gray-500 font-black uppercase tracking-widest">Rifler // PL</p></div>
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">FLICK</p><p class="text-[9px] text-gray-500 font-black uppercase tracking-widest">Support // FR</p></div>
-                        <div class="player-card p-8 border-t-2 border-red-600"><p class="heading text-2xl mb-1">COLD</p><p class="text-[9px] text-gray-500 font-black uppercase tracking-widest">Lead // NO</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">TITAN</p><p class="text-[9px] text-gray-400 font-black uppercase tracking-widest">AWP // DK</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">RAZE</p><p class="text-[9px] text-gray-400 font-black uppercase tracking-widest">Entry // BR</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">NEO</p><p class="text-[9px] text-gray-400 font-black uppercase tracking-widest">Rifler // PL</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">FLICK</p><p class="text-[9px] text-gray-400 font-black uppercase tracking-widest">Support // FR</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">COLD</p><p class="text-[9px] text-gray-400 font-black uppercase tracking-widest">Lead // NO</p></div>
                     </div>
                 </div>
 
                 <div>
                     <div class="flex items-center gap-8 mb-12">
                         <h3 class="heading text-5xl">Fortnite</h3>
-                        <span class="text-purple-600 font-black text-xs italic tracking-widest uppercase">FNCS Pro</span>
+                        <span class="text-[#ff5e00] font-black text-xs italic tracking-widest uppercase">FNCS Pro</span>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-5">
-                        <div class="player-card p-8 border-t-2 border-purple-600"><p class="heading text-2xl mb-1">CRANK</p><p class="text-[9px] text-purple-500 font-black uppercase tracking-widest">Duo // CA</p></div>
-                        <div class="player-card p-8 border-t-2 border-purple-600"><p class="heading text-2xl mb-1">ZERO</p><p class="text-[9px] text-purple-500 font-black uppercase tracking-widest">Frag // UK</p></div>
-                        <div class="player-card p-8 border-t-2 border-purple-600"><p class="heading text-2xl mb-1">BOXER</p><p class="text-[9px] text-purple-500 font-black uppercase tracking-widest">Build // FR</p></div>
-                        <div class="player-card p-8 border-t-2 border-purple-600"><p class="heading text-2xl mb-1">SIPHON</p><p class="text-[9px] text-purple-500 font-black uppercase tracking-widest">Heal // US</p></div>
-                        <div class="player-card p-8 border-t-2 border-purple-600"><p class="heading text-2xl mb-1">SHIFT</p><p class="text-[9px] text-purple-500 font-black uppercase tracking-widest">Tact // DE</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">CRANK</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Duo // CA</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">ZERO</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Frag // UK</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">BOXER</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Build // FR</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">SIPHON</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Heal // US</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">SHIFT</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Tact // DE</p></div>
                     </div>
                 </div>
 
                 <div>
                     <div class="flex items-center gap-8 mb-12">
                         <h3 class="heading text-5xl">Rocket League</h3>
-                        <span class="text-orange-600 font-black text-xs italic tracking-widest uppercase">RLCS Division</span>
+                        <span class="text-[#ff5e00] font-black text-xs italic tracking-widest uppercase">RLCS Division</span>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-5">
-                        <div class="player-card p-8 border-t-2 border-orange-600"><p class="heading text-2xl mb-1">AERIAL</p><p class="text-[9px] text-orange-500 font-black uppercase tracking-widest">First // AU</p></div>
-                        <div class="player-card p-8 border-t-2 border-orange-600"><p class="heading text-2xl mb-1">BOOST</p><p class="text-[9px] text-orange-500 font-black uppercase tracking-widest">Second // US</p></div>
-                        <div class="player-card p-8 border-t-2 border-orange-600"><p class="heading text-2xl mb-1">GOALIE</p><p class="text-[9px] text-orange-500 font-black uppercase tracking-widest">Third // DE</p></div>
-                        <div class="player-card p-8 border-t-2 border-orange-600"><p class="heading text-2xl mb-1">PINCH</p><p class="text-[9px] text-orange-500 font-black uppercase tracking-widest">Sub // UK</p></div>
-                        <div class="player-card p-8 border-t-2 border-orange-600"><p class="heading text-2xl mb-1">DEMO</p><p class="text-[9px] text-orange-500 font-black uppercase tracking-widest">Sub // BR</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">AERIAL</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">First // AU</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">BOOST</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Second // US</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">GOALIE</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Third // DE</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">PINCH</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Sub // UK</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">DEMO</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Sub // BR</p></div>
                     </div>
                 </div>
 
                 <div>
                     <div class="flex items-center gap-8 mb-12">
                         <h3 class="heading text-5xl">Microvolts</h3>
-                        <span class="text-blue-600 font-black text-xs italic tracking-widest uppercase">Global League</span>
+                        <span class="text-[#ff5e00] font-black text-xs italic tracking-widest uppercase">Global League</span>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-5">
-                        <div class="player-card p-8 border-t-2 border-blue-600"><p class="heading text-2xl mb-1">ΤΟΥ</p><p class="text-[9px] text-blue-500 font-black uppercase tracking-widest">Strike // KR</p></div>
-                        <div class="player-card p-8 border-t-2 border-blue-600"><p class="heading text-2xl mb-1">CELL</p><p class="text-[9px] text-blue-500 font-black uppercase tracking-widest">Snipe // US</p></div>
-                        <div class="player-card p-8 border-t-2 border-blue-600"><p class="heading text-2xl mb-1">VOLT</p><p class="text-[9px] text-blue-500 font-black uppercase tracking-widest">Tank // DE</p></div>
-                        <div class="player-card p-8 border-t-2 border-blue-600"><p class="heading text-2xl mb-1">BOLT</p><p class="text-[9px] text-blue-500 font-black uppercase tracking-widest">Support // IT</p></div>
-                        <div class="player-card p-8 border-t-2 border-blue-600"><p class="heading text-2xl mb-1">WIRE</p><p class="text-[9px] text-blue-500 font-black uppercase tracking-widest">Utility // JP</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">ΤΟΥ</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Strike // KR</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">CELL</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Snipe // US</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">VOLT</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Tank // DE</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">BOLT</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Support // IT</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">WIRE</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Utility // JP</p></div>
                     </div>
                 </div>
 
                 <div>
                     <div class="flex items-center gap-8 mb-12">
                         <h3 class="heading text-5xl">GTA Online</h3>
-                        <span class="text-green-600 font-black text-xs italic tracking-widest uppercase">Tactical Ops</span>
+                        <span class="text-[#ff5e00] font-black text-xs italic tracking-widest uppercase">Tactical Ops</span>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-5">
-                        <div class="player-card p-8 border-t-2 border-green-600"><p class="heading text-2xl mb-1">EXEC</p><p class="text-[9px] text-green-500 font-black uppercase tracking-widest">Leader // US</p></div>
-                        <div class="player-card p-8 border-t-2 border-green-600"><p class="heading text-2xl mb-1">DRIFT</p><p class="text-[9px] text-green-500 font-black uppercase tracking-widest">Driver // DE</p></div>
-                        <div class="player-card p-8 border-t-2 border-green-600"><p class="heading text-2xl mb-1">SCOPE</p><p class="text-[9px] text-green-500 font-black uppercase tracking-widest">Sniper // RU</p></div>
-                        <div class="player-card p-8 border-t-2 border-green-600"><p class="heading text-2xl mb-1">SHELL</p><p class="text-[9px] text-green-500 font-black uppercase tracking-widest">Tech // CN</p></div>
-                        <div class="player-card p-8 border-t-2 border-green-600"><p class="heading text-2xl mb-1">GHOST</p><p class="text-[9px] text-green-500 font-black uppercase tracking-widest">Stealth // JP</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">EXEC</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Leader // US</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">DRIFT</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Driver // DE</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">SCOPE</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Sniper // RU</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">SHELL</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Tech // CN</p></div>
+                        <div class="player-card p-8 border-t-2 border-[#ff5e00]"><p class="heading text-2xl mb-1">GHOST</p><p class="text-[9px] text-[#ff5e00] font-black uppercase tracking-widest">Stealth // JP</p></div>
                     </div>
                 </div>
             </div>
@@ -176,19 +175,19 @@
             <h2 class="heading text-7xl mb-24 italic">Official Supply</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div class="group">
-                    <div class="bg-zinc-950 aspect-square mb-8 flex items-center justify-center border border-white/5 group-hover:border-red-600 transition-all">
+                    <div class="bg-zinc-950 aspect-square mb-8 flex items-center justify-center border border-white/5 group-hover:border-[#ff5e00] transition-all">
                         <span class="heading text-[10px] opacity-10 italic tracking-widest">Product_01</span>
                     </div>
                     <h4 class="font-black text-sm uppercase mb-2">2026 Pro Jersey</h4>
-                    <p class="text-[11px] text-red-600 font-black mb-8">$75.00</p>
+                    <p class="text-[11px] text-[#ff5e00] font-black mb-8">$75.00</p>
                     <button onclick="addToBag('Pro Jersey', 75)" class="w-full border border-white/10 py-4 text-[10px] font-black uppercase hover:bg-white hover:text-black transition-all">Add to Bag</button>
                 </div>
                 <div class="group">
-                    <div class="bg-zinc-950 aspect-square mb-8 flex items-center justify-center border border-white/5 group-hover:border-red-600 transition-all">
+                    <div class="bg-zinc-950 aspect-square mb-8 flex items-center justify-center border border-white/5 group-hover:border-[#ff5e00] transition-all">
                         <span class="heading text-[10px] opacity-10 italic tracking-widest">Product_02</span>
                     </div>
                     <h4 class="font-black text-sm uppercase mb-2">Blackout Hoodie</h4>
-                    <p class="text-[11px] text-red-600 font-black mb-8">$115.00</p>
+                    <p class="text-[11px] text-[#ff5e00] font-black mb-8">$115.00</p>
                     <button onclick="addToBag('Blackout Hoodie', 115)" class="w-full border border-white/10 py-4 text-[10px] font-black uppercase hover:bg-white hover:text-black transition-all">Add to Bag</button>
                 </div>
             </div>
@@ -196,8 +195,11 @@
 
         <section id="contact" class="section">
             <div class="flex justify-between items-center mb-16 border-b border-white/5 pb-8">
-                <h2 class="heading text-7xl italic leading-[0.8]">DIRECT<br>LINE.</h2>
-                <button onclick="showPage('home')" class="text-[10px] font-bold border border-white/10 px-8 py-3 hover:bg-white hover:text-black transition uppercase tracking-widest">Return Home [X]</button>
+                <div class="flex items-center gap-6">
+                    <img src="DLELOGO.jpg" alt="DLE" class="h-10">
+                    <h2 class="heading text-7xl italic leading-[0.8]">DIRECT<br>LINE.</h2>
+                </div>
+                <button onclick="showPage('home')" class="text-[10px] font-bold border border-white/10 px-8 py-3 hover:border-[#ff5e00] transition uppercase tracking-widest">Return Home [X]</button>
             </div>
             
             <div class="grid lg:grid-cols-2 gap-32">
@@ -205,40 +207,35 @@
                     <p class="text-gray-400 mb-16 text-xl font-light italic">Establish a primary connection for partnership inquiries and roster recruitment.</p>
                     <div class="space-y-10">
                         <div>
-                            <p class="text-[10px] font-black text-red-600 uppercase tracking-[0.4em] mb-3">Global Command</p>
+                            <p class="text-[10px] font-black text-[#ff5e00] uppercase tracking-[0.4em] mb-3">Global Command</p>
                             <p class="heading text-4xl">Berlin, Germany</p>
                         </div>
                         <div>
-                            <p class="text-[10px] font-black text-red-600 uppercase tracking-[0.4em] mb-3">Encrypted Communication</p>
+                            <p class="text-[10px] font-black text-[#ff5e00] uppercase tracking-[0.4em] mb-3">Encrypted Communication</p>
                             <p class="heading text-4xl">INFO@DELIGHT.GG</p>
                         </div>
                     </div>
                 </div>
                 <form class="space-y-8" onsubmit="event.preventDefault(); alert('Message Sent.');">
-                    <input type="text" placeholder="FULL NAME / ENTITY" class="w-full bg-zinc-900 p-6 text-[10px] font-black border border-white/5 focus:border-red-600 outline-none transition uppercase tracking-widest">
-                    <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-zinc-900 p-6 text-[10px] font-black border border-white/5 focus:border-red-600 outline-none transition uppercase tracking-widest">
-                    <textarea placeholder="DATA STREAM" rows="6" class="w-full bg-zinc-900 p-6 text-[10px] font-black border border-white/5 focus:border-red-600 outline-none transition resize-none uppercase tracking-widest"></textarea>
+                    <input type="text" placeholder="FULL NAME / ENTITY" class="w-full bg-zinc-900 p-6 text-[10px] font-black border border-white/5 focus:border-[#ff5e00] outline-none transition uppercase tracking-widest">
+                    <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-zinc-900 p-6 text-[10px] font-black border border-white/5 focus:border-[#ff5e00] outline-none transition uppercase tracking-widest">
+                    <textarea placeholder="DATA STREAM" rows="6" class="w-full bg-zinc-900 p-6 text-[10px] font-black border border-white/5 focus:border-[#ff5e00] outline-none transition resize-none uppercase tracking-widest"></textarea>
                     <button class="btn-primary w-full italic py-6 text-sm">Send Transmission</button>
                 </form>
             </div>
         </section>
-
     </main>
 
     <script>
         function showPage(pageId) {
             const sections = document.querySelectorAll('.section');
             const links = document.querySelectorAll('.nav-link');
-            
             sections.forEach(s => s.classList.remove('active'));
             links.forEach(l => l.classList.remove('active'));
-
             const target = document.getElementById(pageId);
             const nav = document.getElementById('n-' + pageId);
-            
             if (target) target.classList.add('active');
             if (nav) nav.classList.add('active');
-            
             window.scrollTo(0,0);
         }
 
@@ -259,13 +256,10 @@
             let sum = 0;
             cart.forEach(item => {
                 sum += item.price;
-                list.innerHTML += `<div class="flex justify-between border-b border-white/5 pb-6 items-center"><span class="text-[10px] font-black uppercase italic">${item.name}</span><span class="text-[11px] text-red-600 font-black italic">$${item.price}</span></div>`;
+                list.innerHTML += `<div class="flex justify-between border-b border-white/5 pb-6 items-center"><span class="text-[10px] font-black uppercase italic">${item.name}</span><span class="text-[11px] text-[#ff5e00] font-black italic">$${item.price}</span></div>`;
             });
             total.innerText = `$${sum.toFixed(2)}`;
         }
-    </script>
-</body>
-</html>
     </script>
 </body>
 </html>
