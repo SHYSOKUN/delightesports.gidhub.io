@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELIGHT // ELITE ESPORTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #ff003c; --bg: #050505; --surface: #0f0f0f; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        .heading { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; }
+        
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); }
+
+        /* Page Transitions */
+        .section { display: none; min-height: 100vh; padding: 120px 10% 80px 10%; }
+        .section.active { display: block; animation: fadeUp 0.5s ease-out; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Component Styles */
+        .nav-link { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: 0.2s; color: #888; }
+        .nav-link:hover, .nav-link.active { color: #fff; }
+
+        .stat-card { background: var(--surface); border-top: 2px solid var(--primary); padding: 30px; transition: 0.3s; }
+        .stat-card:hover { transform: translateY(-5px); background: #151515; }
+
+        .btn-primary { background: var(--primary); color: #fff; padding: 12px 30px; font-weight: 700; font-size: 12px; text-transform: uppercase; transition: 0.3s; border-radius: 2px; }
+        .btn-primary:hover { filter: brightness(1.2); letter-spacing: 0.1em; }
+
+        /* Cart Drawer */
+        #cart-drawer { position: fixed; right: -350px; top: 0; width: 350px; height: 100%; background: var(--surface); z-index: 2000; transition: 0.4s ease; padding: 40px; border-left: 1px solid #222; }
+        #cart-drawer.open { right: 0; }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-[1500] bg-black/80 backdrop-blur-md border-b border-white/5 px-10 py-6 flex justify-between items-center">
+        <div class="flex items-center gap-10">
+            <div class="heading text-2xl font-black cursor-pointer tracking-tighter" onclick="showPage('home')">DELIGHT</div>
+            <div class="hidden md:flex gap-8">
+                <button onclick="showPage('home')" id="n-home" class="nav-link active">Home</button>
+                <button onclick="showPage('divisions')" id="n-divisions" class="nav-link">Divisions</button>
+                <button onclick="showPage('merch')" id="n-merch" class="nav-link">Merch</button>
+                <button onclick="showPage('contact')" id="n-contact" class="nav-link">Contact</button>
+            </div>
+        </div>
+        <div onclick="toggleCart()" class="text-[10px] font-bold border border-white/20 px-5 py-2 cursor-pointer hover:border-white transition uppercase">
+            Cart [<span id="cart-count">0</span>]
+        </div>
+    </nav>
+
+    <div id="cart-drawer">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="heading text-xl">Shopping Bag</h2>
+            <button onclick="toggleCart()" class="text-[10px] uppercase opacity-50 hover:opacity-100">Close</button>
+        </div>
+        <div id="cart-content" class="space-y-4 mb-8">
+            <p class="text-xs opacity-30 italic">No items added.</p>
+        </div>
+        <div class="border-t border-white/10 pt-6">
+            <div class="flex justify-between font-bold mb-6"><span>Subtotal</span><span id="cart-total">$0.00</span></div>
+            <button class="w-full btn-primary">Check Out</button>
+        </div>
+    </div>
+
+    <main>
+        
+        <section id="home" class="section active">
+            <div class="max-w-4xl">
+                <h3 class="text-red-600 font-bold text-xs uppercase tracking-[0.3em] mb-4">// Excellence in Competition</h3>
+                <h1 class="heading text-6xl md:text-8xl leading-tight mb-8">Engineering the Future of Professional Play.</h1>
+                <p class="text-gray-400 text-lg max-w-2xl mb-10 leading-relaxed">
+                    Delight is a premier multi-gaming organization dedicated to tactical precision and elite-tier performance across the global esports landscape.
+                </p>
+                <div class="flex gap-4">
+                    <button onclick="showPage('divisions')" class="btn-primary">View Rosters</button>
+                    <button onclick="showPage('contact')" class="border border-white/20 px-8 py-3 text-xs font-bold uppercase hover:bg-white hover:text-black transition">Partnerships</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+                <div class="stat-card">
+                    <p class="text-[10px] uppercase font-bold text-gray-500 mb-2">Championships</p>
+                    <h4 class="heading text-4xl">14</h4>
+                </div>
+                <div class="stat-card">
+                    <p class="text-[10px] uppercase font-bold text-gray-500 mb-2">Global Rank</p>
+                    <h4 class="heading text-4xl">#04</h4>
+                </div>
+                <div class="stat-card">
+                    <p class="text-[10px] uppercase font-bold text-gray-500 mb-2">Pro Athletes</p>
+                    <h4 class="heading text-4xl">22</h4>
+                </div>
+            </div>
+        </section>
+
+        <section id="divisions" class="section">
+            <h2 class="heading text-5xl mb-12">Professional Divisions</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="bg-zinc-900/50 p-8 flex justify-between items-center group cursor-pointer border border-transparent hover:border-red-600 transition">
+                    <div class="flex items-center gap-10">
+                        <span class="heading text-4xl opacity-10">01</span>
+                        <div>
+                            <h3 class="heading text-3xl">Valorant</h3>
+                            <p class="text-xs text-gray-500 uppercase">VCT Challengers EMEA</p>
+                        </div>
+                    </div>
+                    <button class="text-[10px] font-bold border border-white/20 px-6 py-2 group-hover:bg-white group-hover:text-black transition">Full Roster</button>
+                </div>
+                <div class="bg-zinc-900/50 p-8 flex justify-between items-center group cursor-pointer border border-transparent hover:border-red-600 transition">
+                    <div class="flex items-center gap-10">
+                        <span class="heading text-4xl opacity-10">02</span>
+                        <div>
+                            <h3 class="heading text-3xl">Counter-Strike 2</h3>
+                            <p class="text-xs text-gray-500 uppercase">ESL Pro League</p>
+                        </div>
+                    </div>
+                    <button class="text-[10px] font-bold border border-white/20 px-6 py-2 group-hover:bg-white group-hover:text-black transition">Full Roster</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="merch" class="section">
+            <h2 class="heading text-5xl mb-12">Official Apparel</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="group">
+                    <div class="bg-zinc-900 aspect-square mb-4 flex items-center justify-center border border-white/5 group-hover:border-red-600 transition">
+                        <span class="text-[10px] font-bold uppercase opacity-20 italic">Jersey Preview</span>
+                    </div>
+                    <h4 class="font-bold text-sm uppercase mb-1">2026 Pro Jersey</h4>
+                    <p class="text-xs text-red-600 font-bold mb-4">$75.00</p>
+                    <button onclick="addToBag('Pro Jersey', 75)" class="w-full border border-white/10 py-2 text-[10px] font-bold uppercase hover:bg-white hover:text-black transition">Add to Bag</button>
+                </div>
+                <div class="group">
+                    <div class="bg-zinc-900 aspect-square mb-4 flex items-center justify-center border border-white/5 group-hover:border-red-600 transition">
+                        <span class="text-[10px] font-bold uppercase opacity-20 italic">Hoodie Preview</span>
+                    </div>
+                    <h4 class="font-bold text-sm uppercase mb-1">Tournament Hoodie</h4>
+                    <p class="text-xs text-red-600 font-bold mb-4">$110.00</p>
+                    <button onclick="addToBag('Tournament Hoodie', 110)" class="w-full border border-white/10 py-2 text-[10px] font-bold uppercase hover:bg-white hover:text-black transition">Add to Bag</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="grid md:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="heading text-5xl mb-8">Let's Talk.</h2>
+                    <p class="text-gray-400 mb-10 leading-relaxed">For professional inquiries, sponsorship opportunities, or press kits, please reach out via our official communication channel.</p>
+                    <div class="space-y-4">
+                        <p class="text-xs font-bold uppercase tracking-widest text-red-600">Email Inquiry</p>
+                        <p class="heading text-2xl">business@delight.gg</p>
+                    </div>
+                </div>
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('Message Received.');">
+                    <input type="text" placeholder="FULL NAME" class="w-full bg-zinc-900 p-4 text-xs font-bold outline-none border border-transparent focus:border-red-600 transition">
+                    <input type="email" placeholder="EMAIL ADDRESS" class="w-full bg-zinc-900 p-4 text-xs font-bold outline-none border border-transparent focus:border-red-600 transition">
+                    <textarea placeholder="HOW CAN WE HELP?" rows="5" class="w-full bg-zinc-900 p-4 text-xs font-bold outline-none border border-transparent focus:border-red-600 transition resize-none"></textarea>
+                    <button class="btn-primary w-full">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Page Switching
+        function showPage(pageId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('n-' + pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // Cart Engine
+        let cart = [];
+        function toggleCart() { document.getElementById('cart-drawer').classList.toggle('open'); }
+
+        function addToBag(name, price) {
+            cart.push({name, price});
+            updateCart();
+            if(!document.getElementById('cart-drawer').classList.contains('open')) toggleCart();
+        }
+
+        function updateCart() {
+            const list = document.getElementById('cart-content');
+            const count = document.getElementById('cart-count');
+            const total = document.getElementById('cart-total');
+            
+            count.innerText = cart.length;
+            list.innerHTML = cart.length === 0 ? '<p class="text-xs opacity-30 italic">No items added.</p>' : '';
+            
+            let sum = 0;
+            cart.forEach(item => {
+                sum += item.price;
+                list.innerHTML += `<div class="flex justify-between border-b border-white/5 pb-4"><span class="text-xs font-bold uppercase">${item.name}</span><span class="text-xs text-red-600">$${item.price}</span></div>`;
+            });
+            total.innerText = `$${sum.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
