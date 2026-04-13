@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DELIGHT ESPORTS // THE FULL ROSTER</title>
+    <title>DELIGHT ESPORTS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
@@ -21,8 +21,8 @@
         .nav-link { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; transition: 0.3s; color: #555; cursor: pointer; border: none; background: none; }
         .nav-link:hover, .nav-link.active { color: var(--primary); }
 
-        .player-card { background: var(--surface); transition: 0.3s; border: 1px solid rgba(255,255,255,0.03); border-top: 2px solid var(--primary); }
-        .player-card:hover { transform: translateY(-5px); background: #141414; box-shadow: 0 10px 20px -10px rgba(0, 102, 255, 0.3); }
+        .player-card, .shop-card { background: var(--surface); transition: 0.3s; border: 1px solid rgba(255,255,255,0.03); border-top: 2px solid var(--primary); }
+        .player-card:hover, .shop-card:hover { transform: translateY(-5px); background: #141414; box-shadow: 0 10px 20px -10px rgba(0, 102, 255, 0.3); }
 
         .btn-primary { background: var(--primary); color: #fff; padding: 14px 35px; font-weight: 700; font-size: 11px; text-transform: uppercase; transition: 0.3s; border-radius: 2px; letter-spacing: 0.1em; cursor: pointer; border: none; }
         .btn-primary:hover { filter: brightness(1.2); transform: translateY(-2px); box-shadow: 0 10px 25px -10px rgba(0, 102, 255, 0.5); }
@@ -44,7 +44,7 @@
             <div class="hidden lg:flex gap-10">
                 <button onclick="showPage('home')" id="n-home" class="nav-link active">Home</button>
                 <button onclick="showPage('divisions')" id="n-divisions" class="nav-link">Divisions</button>
-                <button onclick="showPage('merch')" id="n-merch" class="nav-link">Apparel</button>
+                <button onclick="showPage('shop')" id="n-shop" class="nav-link">Shop</button>
                 <button onclick="showPage('partners')" id="n-partners" class="nav-link">Partners</button>
                 <button onclick="showPage('contact')" id="n-contact" class="nav-link">Contact</button>
             </div>
@@ -81,7 +81,6 @@
         <section id="divisions" class="section">
             <h2 class="heading text-7xl mb-16 italic border-b border-white/5 pb-10">Active Rosters</h2>
             <div class="space-y-24">
-                
                 <div>
                     <h3 class="heading text-4xl mb-8 text-[#0066ff]">Valorant</h3>
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -147,7 +146,6 @@
                         <div class="player-card p-6 text-center"><p class="heading text-xl">MakerErbauer2</p><p class="text-[9px] opacity-50">Stealth</p></div>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -182,11 +180,39 @@
             </div>
         </section>
 
-        <section id="merch" class="section">
-            <h2 class="heading text-7xl mb-12 italic">Apparel</h2>
-            <div class="player-card p-10 text-center max-w-md mx-auto">
-                <p class="heading text-2xl mb-4">Pro Blue Jersey</p>
-                <button onclick="addToBag('Pro Jersey', 75)" class="btn-primary">Add to Bag - $75</button>
+        <section id="shop" class="section">
+            <h2 class="heading text-7xl mb-12 italic border-b border-white/5 pb-10">Supply Depot</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="shop-card p-10 text-center">
+                    <p class="heading text-2xl mb-2">Pro Blue Jersey</p>
+                    <p class="text-[#0066ff] font-bold mb-6">$75.00</p>
+                    <button onclick="addToBag('Pro Blue Jersey', 75)" class="btn-primary w-full">Add to Bag</button>
+                </div>
+                <div class="shop-card p-10 text-center">
+                    <p class="heading text-2xl mb-2">Stealth Hoodie</p>
+                    <p class="text-[#0066ff] font-bold mb-6">$60.00</p>
+                    <button onclick="addToBag('Stealth Hoodie', 60)" class="btn-primary w-full">Add to Bag</button>
+                </div>
+                <div class="shop-card p-10 text-center">
+                    <p class="heading text-2xl mb-2">Tactical Cap</p>
+                    <p class="text-[#0066ff] font-bold mb-6">$30.00</p>
+                    <button onclick="addToBag('Tactical Cap', 30)" class="btn-primary w-full">Add to Bag</button>
+                </div>
+                <div class="shop-card p-10 text-center">
+                    <p class="heading text-2xl mb-2">Founder Tee</p>
+                    <p class="text-[#0066ff] font-bold mb-6">$35.00</p>
+                    <button onclick="addToBag('Founder Tee', 35)" class="btn-primary w-full">Add to Bag</button>
+                </div>
+                <div class="shop-card p-10 text-center">
+                    <p class="heading text-2xl mb-2">Delight Joggers</p>
+                    <p class="text-[#0066ff] font-bold mb-6">$55.00</p>
+                    <button onclick="addToBag('Delight Joggers', 55)" class="btn-primary w-full">Add to Bag</button>
+                </div>
+                <div class="shop-card p-10 text-center">
+                    <p class="heading text-2xl mb-2">Elite Arm Sleeve</p>
+                    <p class="text-[#0066ff] font-bold mb-6">$25.00</p>
+                    <button onclick="addToBag('Elite Arm Sleeve', 25)" class="btn-primary w-full">Add to Bag</button>
+                </div>
             </div>
         </section>
     </main>
@@ -223,7 +249,7 @@
             list.innerHTML = '';
             cart.forEach((item) => {
                 sum += item.price;
-                list.innerHTML += `<div class="flex justify-between items-center py-2 border-b border-white/5"><p class="heading text-sm">${item.name}</p><p class="text-[#0066ff]">$${item.price}</p></div>`;
+                list.innerHTML += `<div class="flex justify-between items-center py-2 border-b border-white/5"><p class="heading text-sm">${item.name}</p><p class="text-[#0066ff]">$${item.price.toFixed(2)}</p></div>`;
             });
             total.innerText = `$${sum.toFixed(2)}`;
         }
